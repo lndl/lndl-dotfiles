@@ -1,4 +1,8 @@
-xclip "Portapapeles
-ag "Buscador mejor que grep para usar en ctrlp
+OS external dependencies:
+--------------------------------------------------------------------------------
+xclip: Command-line clipboard manager
+ag: Fast grep tool replacement
 
-vimplug "Manejador de plugins de vim
+Neovim dependencies:
+--------------------------------------------------------------------------------
+vim-plug: Plugin manager (INCLUDED)
