@@ -13,11 +13,16 @@ set relativenumber "Line numbers
 set cursorline     "Current line highlight
 set cursorcolumn   "Current column highlight
 set scrolloff=3    "Starts to scroll n lines before reach the border
-set wildmode=list:full    " Show complete list of options and navigation too
 set encoding=utf-8 nobomb " Use UTF-8 without BOM
 set binary                " Don’t add empty newlines at the end of files
 set synmaxcol=80          " Syntax colouring limit to n (for performance)
 set colorcolumn=81        " Column limit to n + 1 as indication
+
+" Indent politics
+set tabstop=2 shiftwidth=2 expandtab
+
+" Trim all whitespace when save file
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Disable backups and swap files
 set noswapfile
@@ -32,14 +37,11 @@ let g:netrw_banner=0
 let g:netrw_liststyle=3
 nmap <silent> <C-E> :40vsp<CR>:Explore<CR>
 
-" Syntastic: -------------------------------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Map Q to q in command mode
+cmap Q q
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" Neomake: -------------------------------------------------------------
+autocmd! BufWritePost * Neomake
 
 " CTRLP: -----------------------------------------------------------------
 

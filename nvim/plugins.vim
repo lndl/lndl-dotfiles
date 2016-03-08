@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " General_purpose: -------------------------------------------------------
 Plug 'tmhedberg/matchit'
+Plug 'rking/ag.vim'
 
 " Autocompletion:  -------------------------------------------------------
 Plug 'Shougo/deoplete.nvim'
@@ -11,17 +12,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Syntax: ----------------------------------------------------------------
-Plug 'scrooloose/syntastic' " Syntax check
+Plug 'benekastah/neomake' " Syntax check
 
 " HTML:-------------------------------------------------------------------
-Plug 'mattn/emmet-vim' 
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'sass', 'less', 'scss', 'eruby'] }
 
 " Ruby_Rails: ------------------------------------------------------------
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 
 " File Navigation:--------------------------------------------------------
-Plug 'ctrlpvim/ctrlp.vim' | Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'tacahiroy/ctrlp-funky'
+Plug 'ctrlpvim/ctrlp.vim' | Plug 'FelikZ/ctrlp-py-matcher' | Plug 'tacahiroy/ctrlp-funky'
 
 " Eye Candy:--------------------------------------------------------------
 Plug 'altercation/vim-colors-solarized'
