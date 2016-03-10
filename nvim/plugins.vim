@@ -3,6 +3,9 @@ call plug#begin('~/.config/nvim/plugged')
 " General_purpose: -------------------------------------------------------
 Plug 'tmhedberg/matchit'
 Plug 'rking/ag.vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 
 " Autocompletion:  -------------------------------------------------------
 Plug 'Shougo/deoplete.nvim'
