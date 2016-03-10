@@ -37,8 +37,9 @@ let g:netrw_banner=0
 let g:netrw_liststyle=3
 nmap <silent> <C-E> :40vsp<CR>:Explore<CR>
 
-" Map Q to q in command mode
+" Map some mistakes to desired command
 cmap Q q
+cmap W w
 
 " Neomake: -------------------------------------------------------------
 autocmd! BufWritePost * Neomake
