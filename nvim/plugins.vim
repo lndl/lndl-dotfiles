@@ -2,13 +2,12 @@ call plug#begin('~/.config/nvim/plugged')
 
 " General_purpose: -------------------------------------------------------
 Plug 'tmhedberg/matchit'
-Plug 'rking/ag.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 " Autocompletion:  -------------------------------------------------------
-Plug 'Shougo/deoplete.nvim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 
 " SCM: -------------------------------------------------------------------
 Plug 'tpope/vim-fugitive'
@@ -24,7 +23,6 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'sass', 'less', 'scss', 'eruby'
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 
 " File Navigation:--------------------------------------------------------
-Plug 'ctrlpvim/ctrlp.vim' | Plug 'FelikZ/ctrlp-py-matcher' | Plug 'tacahiroy/ctrlp-funky'
 
 " Eye Candy:--------------------------------------------------------------
 Plug 'altercation/vim-colors-solarized'

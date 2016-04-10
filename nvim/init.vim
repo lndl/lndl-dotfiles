@@ -41,33 +41,19 @@ nmap <silent> <C-E> :40vsp<CR>:Explore<CR>
 cmap Q q
 cmap W w
 
+" Fzf: -----------------------------------------------------------------
+" Adding some mappings:
+nmap <silent> <C-P> :Files<CR>
+nmap <silent> <C-O> :BTags<CR>
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
 " Neomake: -------------------------------------------------------------
 autocmd! BufWritePost * Neomake
-
-" CTRLP: -----------------------------------------------------------------
-
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
-
-let g:ctrlp_use_caching = 0
-let g:ctrlp_prompt_mappings = {
-      \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>', '<c-h>'],
-      \ }
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*source_maps*,.git,.svn,*/public/assets/*
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn|source_maps)$',
-      \ 'file': '\v\.(exe|so|dll|pyc)$'
-      \ }
-
-let g:ctrlp_extensions = ['funky', 'tag']
-let g:ctrlp_funky_matchtype = 'path'
-let g:ctrlp_funky_syntax_highlight = 1
 
 " VimAirline: -----------------------------------------------------------------
 
@@ -101,6 +87,3 @@ let g:airline_symbols.linenr = ''
 let g:airline_symbols.whitespace = '✹'
 
 let g:airline_theme='solarized'
-
-" Deoplete: -------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
