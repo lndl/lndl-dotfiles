@@ -29,10 +29,13 @@ set noswapfile
 set nobackup
 set nowritebackup
 
-"Bizarre escape from insert mode
+" Bizarre escape from insert mode
 imap ñf <Esc>
 
-"Some tweaks to Vim Explorer
+" Sets some small configs to tmux themes configurations
+au BufRead *.tmuxtheme setlocal filetype=tmux foldmethod=marker
+
+" Some tweaks to Vim Explorer
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 nmap <silent> <C-E> :40vsp<CR>:Explore<CR>
