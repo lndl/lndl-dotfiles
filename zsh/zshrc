@@ -8,7 +8,10 @@ source ~/.zsh/bindkeys.zsh
 source ~/.zsh/functions.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/zsh_hooks.zsh
-source ~/.zsh/docker.zsh
+source ~/.zsh/ssh.zsh
+source ~/.zsh/fzf.zsh
+
+[ -z $TMUX ] || export TERM=screen-256color
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH=bin:script:~/.bin:$PATH

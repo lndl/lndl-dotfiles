@@ -37,50 +37,6 @@ function extract {
   fi
 }
 
-function ss {
-  if [ -e script/server ]; then
-    script/server $@
-  else
-    script/rails server $@
-  fi
-}
-
-function sc {
-  if [ -e script/console ]; then
-    script/console $@
-  else
-    script/rails console $@
-  fi
-}
-
-function trash () {
-  local path
-  for path in "$@"; do
-    # ignore any arguments
-    if [[ "$path" = -* ]]; then :
-    else
-      local dst=${path##*/}
-      # append the time if necessary
-      while [ -e ~/.Trash/"$dst" ]; do
-        dst="$dst "$(date +%H-%M-%S)
-      done
-      /bin/mv "$path" ~/.Trash/"$dst"
-    fi
-  done
-}
-
-function strip_diff_leading_symbols {
-  local color_code_regex="(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])"
-
-  # simplify the unified patch diff header
-  sed -r "s/^($color_code_regex)diff --git .*$//g" | \
-        sed -r "s/^($color_code_regex)index .*$/\n\1$(rule)/g" | \
-        sed -r "s/^($color_code_regex)\+\+\+(.*)$/\1+++\5\n\1$(rule)\x1B\[m/g" |\
-
-  # actually strips the leading symbols
-  sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
-}
-
 ## Print a horizontal rule
 rule () {
   printf "%$(tput cols)s\n"|tr " " "─"}}

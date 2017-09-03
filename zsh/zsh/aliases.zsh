@@ -6,11 +6,16 @@ alias ll='ls -GFhl'
 
 # Alias text editor to neovim
 alias e='nvim'
+alias vim='nvim'
+
+# Weather
+alias wh='curl wttr.in/La_Plata'
 
 # Git aliases
 alias g='git'
 alias gl='git pull'
 alias gp='git push'
+alias gb='git branch'
 alias glo='git log'
 alias gd='git diff'
 alias gs='git status'
@@ -18,9 +23,38 @@ alias ga='git add'
 alias gc='git commit'
 alias gcm='git commit -m'
 alias gco='git checkout'
+alias gm='git merge'
+alias gfa='git fetch -a'
+alias gmnf='git merge --no-ff'
+alias cdgr='cd $(git rev-parse --show-toplevel)'
+
+alias gf='fzf-git-select-files'
+alias gaf='git add $(gf)'
+
+# Bundler aliases
+alias be='bundle exec'
+alias bi='bundle install'
+alias bu='bundle update'
+
+# Rails (with Bundler)
+alias rs='bundle exec rails server'
+alias rc='bundle exec rails console'
+
+# Yat.sh
+alias ys=yat.sh
+
+# sshok
+(which sshok > /dev/null) && alias ssh=sshok
 
 # Specific aliases for OSX
 if [ $(uname) = "Darwin" ]
 then
   alias ctags="`brew --prefix`/bin/ctags"
 fi
+
+# Docker compose
+alias dkc='docker-compose'
+alias dkcu='docker-compose up'
+alias dkcd='docker-compose down'
+alias dkce='docker-compose exec'
+alias dkcr='docker-compose run'

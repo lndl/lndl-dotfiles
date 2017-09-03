@@ -17,10 +17,13 @@ export ARCHFLAGS='-arch x86_64'
 
 export LESS='--ignore-case --raw-control-chars'
 export PAGER='less'
-export EDITOR='vim'
+export EDITOR='nvim'
 export PYTHONPATH=/usr/local/lib/python2.6/site-packages
 # CTAGS Sorting in VIM/Emacs is better behaved with this in place
 export LC_COLLATE=C
 
 # GitHub token with no scope, used to get around API limits
 export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.gh_api_token)
+
+# Android SDK
+export ANDROID_HOME=$HOME/androidsdk
