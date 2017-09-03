@@ -27,3 +27,6 @@ export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.gh_api_token)
 
 # Android SDK
 export ANDROID_HOME=$HOME/androidsdk
+
+# Shift time between normal mode and insert mode in VI-Mode
+export KEYTIMEOUT=0
