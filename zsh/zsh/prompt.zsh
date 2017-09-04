@@ -42,6 +42,7 @@ PROMPT=',\(%~%<< $(git_prompt_info)) $(vi_mode) = '
 
 function zle-line-init zle-keymap-select {
   zle reset-prompt
+  zle -R
 }
 
 zle -N zle-line-init

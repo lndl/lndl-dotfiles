@@ -4,5 +4,5 @@
 
 bindkey -v   # Default to standard VI bindings
 
-bindkey "^J"    history-substring-search-down
-bindkey "^K"    history-substring-search-up
+bindkey -M viins "^J"    history-substring-search-down
+bindkey -M viins "^K"    history-substring-search-up
