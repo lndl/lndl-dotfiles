@@ -56,7 +56,7 @@ nnoremap <leader>* :Ag <C-R><C-W><CR>
 " Leader -> Fzf
 nnoremap <leader>ñ :Files<CR>
 nnoremap <leader>o :BTags<CR>
-nnoremap <leader>j :Buffers<CR>
+nnoremap <leader>i :Buffers<CR>
 
 
 " Lightline: ---------------------------------------------------------------
