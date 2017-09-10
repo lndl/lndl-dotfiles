@@ -27,6 +27,7 @@ alias gm='git merge'
 alias gfa='git fetch -a'
 alias gmnf='git merge --no-ff'
 alias cdgr='cd $(git rev-parse --show-toplevel)'
+alias glt='git describe --abbrev=0 --tags'
 
 alias gf='fzf-git-select-files'
 alias gaf='git add $(gf)'
