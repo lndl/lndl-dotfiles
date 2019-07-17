@@ -15,3 +15,14 @@ renv () {
     export SSHRANCHER_PASSWORD="${RANCHER_SECRET_KEY}"
   fi
 }
+
+ranchercp() {
+  [ -z "$1" ] && echo "No container suplied" && return 1
+  [ -z "$2" ] && echo "No container path supplied" && return 1
+  [ -z "$3" ] && echo "No local path supplied" && return 1
+
+  local hostId=$(rancher ps -c | grep $1 | awk '{ print $5 }')
+  local containerId=$(rancher ps -c | grep $1 | awk '{ print $7 }')
+
+  rancher --host $hostId docker cp $containerId:$2 $3
+}
