@@ -1,8 +1,8 @@
 # Colorize output, add file type indicator, and put sizes in human readable format
-alias ls='ls -GFh'
+alias ls='ls -Fh'
 
 # Same as above, but in long listing format
-alias ll='ls -GFhl'
+alias ll='ls -Fhl'
 
 # Alias text editor to neovim
 alias e='nvim'
@@ -55,6 +55,12 @@ alias whlis='lsof -nP -itcp -sTCP:LISTEN | grep'
 if [ $(uname) = "Darwin" ]
 then
   alias ctags="`brew --prefix`/bin/ctags"
+fi
+
+# Specific aliases for GNU/Linux
+if [ $(uname) = "Linux" ]
+then
+  alias open="xdg-open"
 fi
 
 # Docker compose

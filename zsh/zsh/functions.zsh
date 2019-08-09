@@ -40,3 +40,13 @@ function extract {
 ## Print a horizontal rule
 rule () {
   printf "%$(tput cols)s\n"|tr " " "─"}}
+
+## Who and where am I
+function whoandwherei {
+  if [ $(uname) = "Darwin" ]
+  then
+    echo "$(whoami)@$(ipconfig getifaddr en0 || echo "nowhere")"
+  else
+    echo "$(whoami)@$(ip route get 1 | awk '{print $3; exit}')"
+  fi
+}

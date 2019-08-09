@@ -19,8 +19,10 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_COLLATE=C # CTAGS Sorting in VIM/Emacs is better behaved with this in place
 
-# GitHub token with no scope, used to get around API limits
-export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.gh_api_token)
+if [ `uname` = "Darwin" ]; then
+  # GitHub token with no scope, used to get around API limits
+  export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.gh_api_token)
+fi
 
 # Android SDK
 export ANDROID_HOME=$HOME/androidsdk
