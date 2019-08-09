@@ -4,8 +4,6 @@ do
   source $file
 done
 
-[ -z $TMUX ] || export TERM=screen-256color
-
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH=bin:script:~/.bin:$PATH
 
@@ -17,3 +15,11 @@ precmd() {
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Attach or start with tmux
+if [[ -z $TMUX ]]; then
+  # NOT in tmux: try to attach an existing session or create one named 'default'"
+  tmux attach 2>/dev/null || tmux new -s default
+else
+  # there IS tmux: do nothing"
+fi
