@@ -4,7 +4,6 @@ set -g default-terminal "screen-256color" # Besides, I have to force TERM to be 
 set -g base-index 1
 set -g mouse on
 set -gs escape-time 0
-source-file ~/lndl-dotfiles/tmux/lalala.tmuxtheme
 
 ## Fork the current directory when create a window or a panel
 bind '"' split-window -c "#{pane_current_path}"
