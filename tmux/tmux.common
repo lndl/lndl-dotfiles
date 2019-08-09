@@ -1,0 +1,18 @@
+## General options
+set -g terminal-overrides ',xterm-256color:Tc'
+set -g default-terminal "screen-256color" # Besides, I have to force TERM to be this value when TMUX is running (in .zshrc config)
+set -g base-index 1
+set -g mouse on
+set -gs escape-time 0
+source-file ~/lndl-dotfiles/tmux/lalala.tmuxtheme
+
+## Fork the current directory when create a window or a panel
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+## Vi-like movements across the panes
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
