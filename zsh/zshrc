@@ -1,15 +1,8 @@
-source ~/.zsh/colors.zsh
-source ~/.zsh/setopt.zsh
-source ~/.zsh/exports.zsh
-source ~/.zsh/prompt.zsh
-source ~/.zsh/completion.zsh
-source ~/.zsh/aliases.zsh
-source ~/.zsh/bindkeys.zsh
-source ~/.zsh/functions.zsh
-source ~/.zsh/history.zsh
-source ~/.zsh/zsh_hooks.zsh
-source ~/.zsh/ssh.zsh
-source ~/.zsh/fzf.zsh
+# Load all the configuration from custom zsh folder
+for file in $(ls ~/.zsh/*.zsh);
+do
+  source $file
+done
 
 [ -z $TMUX ] || export TERM=screen-256color
 
