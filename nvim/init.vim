@@ -7,6 +7,8 @@ endif
 
 colorscheme default
 set background=dark
+highlight LineNr guifg=black
+highlight LineNr guibg=#00aa7f
 set termguicolors
 
 set number
@@ -30,7 +32,7 @@ set nobackup
 set nowritebackup
 
 " Use OS clipboard by default
-set clipboard=unnamed
+set clipboard^=unnamed,unnamedplus
 
 " A fast way to save
 map <silent> <Esc><Esc> :w<CR>
