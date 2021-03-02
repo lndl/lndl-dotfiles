@@ -7,19 +7,5 @@ done
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH=bin:script:~/.bin:$PATH
 
-precmd() {
-  if [[ -n "$TMUX" ]]; then
-    tmux setenv "$(tmux display -p 'TMUX_PWD_#D')" "$PWD"
-  fi
-}
-
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Attach or start with tmux
-if [[ -z $TMUX ]]; then
-  # NOT in tmux: try to attach an existing session or create one named 'default'"
-  tmux attach 2>/dev/null || tmux new -s default
-else
-  # there IS tmux: do nothing"
-fi

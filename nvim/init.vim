@@ -7,8 +7,7 @@ endif
 
 colorscheme default
 set background=dark
-highlight LineNr guifg=black
-highlight LineNr guibg=#00aa7f
+set signcolumn=yes
 set termguicolors
 
 set number
@@ -19,6 +18,12 @@ set scrolloff=3            " Starts to scroll n lines before reach the border
 set encoding=utf-8 nobomb  " Use UTF-8 without BOM
 set binary                 " Don’t add empty newlines at the end of files
 set mouse=a
+
+" read modelines at the beginning of files
+set modeline
+
+" Do not show mode
+set noshowmode
 
 " Indent politics
 set tabstop=2 shiftwidth=2 expandtab
@@ -47,7 +52,7 @@ nmap <silent> <C-E> :40vsp<CR>:Explore<CR>
 "cmap W w
 
 " Leaders
-let mapleader="ñ"
+let mapleader=";"
 
 " Mappings with Leader
 nnoremap <leader>f /
@@ -56,9 +61,13 @@ nnoremap <leader>g :Ag<Space>
 nnoremap <leader>* :Ag <C-R><C-W><CR>
 
 " Leader -> Fzf
-nnoremap <leader>ñ :Files<CR>
+nnoremap <leader>; :Files<CR>
 nnoremap <leader>o :BTags<CR>
-nnoremap <leader>i :Buffers<CR>
+nnoremap <leader>a :Buffers<CR>
+
+" Leader -> ALE
+nnoremap <leader>w :ALEPrevious<CR>
+nnoremap <leader>e :ALENext<CR>
 
 " Emmet: ---------------------------------------------------------------
 let g:user_emmet_settings = {
@@ -75,12 +84,9 @@ let g:mta_filetypes = {
     \ 'javascript.jsx' : 1
     \}
 
-" Lightline: -----------------------------------------------------------------
-" let g:lightline = { 'colorscheme': 'gotham' }
-
 " Ale Linter: ---------------------------------------------------------------
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 1
+let g:ale_lint_on_text_changed = 0
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 let g:ale_sign_error = '⛔️'
@@ -94,23 +100,23 @@ let g:ale_linters = {
 " Ale + Lightline
 let g:lightline = {}
 let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
+  \  'linter_checking': 'lightline#ale#checking',
+  \  'linter_warnings': 'lightline#ale#warnings',
+  \  'linter_errors': 'lightline#ale#errors',
+  \  'linter_ok': 'lightline#ale#ok',
+\ }
 let g:lightline.component_type = {
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ }
+  \  'linter_checking': 'left',
+  \  'linter_warnings': 'warning',
+  \  'linter_errors': 'error',
+  \  'linter_ok': 'left',
+\ }
 let g:lightline.active = { 'right': [
-      \  [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
-      \  [ 'lineinfo' ],
-      \  [ 'percent' ],
-      \  [ 'fileformat', 'fileencoding', 'filetype' ]]
-      \ }
+  \  [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+  \  [ 'lineinfo' ],
+  \  [ 'percent' ],
+  \  [ 'fileformat', 'fileencoding', 'filetype' ]]
+\ }
 
 " Disabling all highlighting
 highlight clear ALEErrorSign
@@ -121,13 +127,28 @@ let g:airline#extensions#ale#enabled = 1
 " React: ---------------------------------------------------------------
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-" Ultisnips: ------------------------------------------------------------
+" Ultisnips: -----------------------------------------------------------
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-tab>"
 
-" Deoplete: ------------------------------------------------------------
+" Deoplate: ------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
+
+" Language Client: -----------------------------------------------------
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+  \ 'ruby': ['solargraph', 'stdio'],
+\ }
+let g:LanguageClient_autoStart = 1
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Inflector: -----------------------------------------------------------
 let g:inflector_mapping = 'gI'

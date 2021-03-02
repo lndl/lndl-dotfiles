@@ -14,7 +14,12 @@ Plug 'junegunn/vim-easy-align'
 Plug 'sotte/presenting.vim'
 
 " Autocompletion:  -------------------------------------------------------
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+\ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Snippets:  ------------------------------------------------------------
@@ -62,8 +67,12 @@ Plug 'ekalinin/Dockerfile.vim'
 " Solidity: ------------------------------------------------------------
 Plug 'tomlion/vim-solidity'
 
+" Godot: ------------------------------------------------------------
+Plug 'calviken/vim-gdscript3'
+
 " Eye Candy:--------------------------------------------------------------
 Plug 'whatyouhide/vim-gotham'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
 
 call plug#end()

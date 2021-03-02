@@ -15,3 +15,21 @@ bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
+
+## TPM
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-sidebar'
+set -g @plugin 'dracula/tmux'
+set -g @dracula-show-weather false
+set -g @dracula-show-battery false
+set -g @dracula-show-network false
+set -g @dracula-cpu-usage true
+set -g @dracula-ram-usage true
+set -g @dracula-gpu-usage false
+set -g @dracula-show-powerline true
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/lndl-dotfiles/tmux/tpm/tpm'

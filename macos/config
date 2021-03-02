@@ -26,3 +26,10 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
+
+# Disable character set popup while keep pressing
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+# Speeding up keystrokes
+defaults write -g InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 1
