@@ -1,8 +1,11 @@
 # add in zsh-completions
-fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
 
 autoload bashcompinit && bashcompinit
-autoload -U compinit && compinit
+autoload -Uz compinit && compinit -i
 zmodload -i zsh/complist
 
 # man zshcontrib
@@ -70,3 +73,7 @@ zstyle ':filter-select' extended-search no # see below
 
 # AWS
 complete -C '/usr/local/aws-cli/aws_completer' aws
+
+# Docker
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes

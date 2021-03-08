@@ -1,2 +1,1 @@
-# set-option -g default-command "reattach-to-user-namespace -l zsh" # Workaround to pbcopy problem
-# source-file ~/lndl-dotfiles/tmux/basic.macos.tmuxtheme
+source-file ~/lndl-dotfiles/tmux/basic.macos.tmuxtheme

@@ -14,17 +14,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'sotte/presenting.vim'
 
 " Autocompletion:  -------------------------------------------------------
-Plug '/usr/local/opt/fzf'
+Plug '/opt/homebrew/opt/fzf/'
 Plug 'junegunn/fzf.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-  \ 'branch': 'next',
-  \ 'do': 'bash install.sh',
-\ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" Snippets:  ------------------------------------------------------------
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 " SCM: -------------------------------------------------------------------
 Plug 'tpope/vim-fugitive'
@@ -35,9 +26,6 @@ Plug 'maximbaz/lightline-ale'
 
 " HTML:-------------------------------------------------------------------
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'sass', 'less', 'scss', 'eruby'] }
-
-" LaTEX: ------------------------------------------------------------
-Plug 'lervag/vimtex', { 'for': ['tex'] }
 
 " Ruby_Rails: ------------------------------------------------------------
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }

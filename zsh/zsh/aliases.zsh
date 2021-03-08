@@ -42,12 +42,6 @@ alias rs='bundle exec rails server'
 alias rc='bundle exec rails console'
 alias rdb='bundle exec rails db'
 
-# Yat.sh
-alias ys=yat.sh
-
-# sshok
-(which sshok > /dev/null) && alias ssh=sshok
-
 # Where is listening a process?
 alias whlis='lsof -nP -itcp -sTCP:LISTEN | grep'
 

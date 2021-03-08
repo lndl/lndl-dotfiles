@@ -127,11 +127,6 @@ let g:airline#extensions#ale#enabled = 1
 " React: ---------------------------------------------------------------
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-" Ultisnips: -----------------------------------------------------------
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-tab>"
-
 " Deoplate: ------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
