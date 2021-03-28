@@ -1,0 +1,4 @@
+{
+  "codeLens.enable": true,
+  "solargraph.commandPath": "~/.asdf/installs/ruby/2.7.2/bin/solargraph"
+}

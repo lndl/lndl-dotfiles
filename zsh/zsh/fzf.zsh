@@ -23,3 +23,5 @@ bindkey '^P' fzf-file-preview
 fzf-git-select-files() {
   git status -s | fzf -m --border --header="HINT: (Un)Select files to commit with TAB. Move with CTRL+(j|k)" --preview="git --no-pager diff --color=always {2}" | cut -b '4-'
 }
+
+export FZF_DEFAULT_COMMAND='ag -g ""'

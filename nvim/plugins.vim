@@ -16,12 +16,16 @@ Plug 'sotte/presenting.vim'
 " Autocompletion:  -------------------------------------------------------
 Plug '/opt/homebrew/opt/fzf/'
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Snippets:  -------------------------------------------------------------
+Plug 'honza/vim-snippets'
 
 " SCM: -------------------------------------------------------------------
 Plug 'tpope/vim-fugitive'
 
 " Syntax: ----------------------------------------------------------------
-Plug 'w0rp/ale' " Syntax check
+Plug 'w0rp/ale'
 Plug 'maximbaz/lightline-ale'
 
 " HTML:-------------------------------------------------------------------

@@ -1,14 +1,7 @@
-# Brew
-eval $(/opt/homebrew/bin/brew shellenv)
-
 # Load all the configuration from custom zsh folder
 for file in $(ls ~/.zsh/*.zsh);
 do
   source $file
 done
 
-source $(brew --prefix asdf)/asdf.sh
-export PATH=bin:script:~/.bin:$PATH
-
-# Fuzzy finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/lndl-dotfiles/zsh/zshrc.local

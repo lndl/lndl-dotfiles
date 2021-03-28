@@ -9,6 +9,7 @@ colorscheme default
 set background=dark
 set signcolumn=yes
 set termguicolors
+set laststatus=2
 
 set number
 "set relativenumber         " Line numbers
@@ -18,6 +19,12 @@ set scrolloff=3            " Starts to scroll n lines before reach the border
 set encoding=utf-8 nobomb  " Use UTF-8 without BOM
 set binary                 " Don’t add empty newlines at the end of files
 set mouse=a
+
+" Popup color
+highlight Pmenu ctermbg=DarkBlue guibg=DarkBlue
+
+" set completion type
+set completeopt+=menuone
 
 " read modelines at the beginning of files
 set modeline
@@ -127,24 +134,6 @@ let g:airline#extensions#ale#enabled = 1
 " React: ---------------------------------------------------------------
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-" Deoplate: ------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-
-" Language Client: -----------------------------------------------------
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-let g:LanguageClient_serverCommands = {
-  \ 'ruby': ['solargraph', 'stdio'],
-\ }
-let g:LanguageClient_autoStart = 1
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
 " Inflector: -----------------------------------------------------------
 let g:inflector_mapping = 'gI'
 
@@ -161,4 +150,34 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-set laststatus=2
+" COC Completion: -------------------------------------------------------------
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'

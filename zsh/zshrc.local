@@ -1,0 +1,15 @@
+# Brew
+eval $(/opt/homebrew/bin/brew shellenv)
+
+# ASDF
+source $(brew --prefix asdf)/asdf.sh
+
+# PATH
+export PATH=bin:script:~/.bin:$PATH
+
+# Fuzzy finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Aliases
+alias vim=nvim
+alias gs="git status"
