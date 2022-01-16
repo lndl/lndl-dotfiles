@@ -64,8 +64,8 @@ let mapleader=";"
 " Mappings with Leader
 nnoremap <leader>f /
 nnoremap <leader>F ?
-nnoremap <leader>g :Ag<Space>
-nnoremap <leader>* :Ag <C-R><C-W><CR>
+nnoremap <leader>g :Rg<Space>
+nnoremap <leader>* :Rg <C-R><C-W><CR>
 
 " Leader -> Fzf
 nnoremap <leader>; :Files<CR>
@@ -91,46 +91,6 @@ let g:mta_filetypes = {
     \ 'javascript.jsx' : 1
     \}
 
-" Ale Linter: ---------------------------------------------------------------
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_sign_column_always = 1
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
-let g:ale_sign_error = '⛔️'
-let g:ale_sign_warning = '❗️'
-" Disabling eruby lintering because it works wrong
-let g:ale_linters = {
-\   'eruby': [],
-\   'ruby': ['rubocop']
-\}
-
-" Ale + Lightline
-let g:lightline = {}
-let g:lightline.component_expand = {
-  \  'linter_checking': 'lightline#ale#checking',
-  \  'linter_warnings': 'lightline#ale#warnings',
-  \  'linter_errors': 'lightline#ale#errors',
-  \  'linter_ok': 'lightline#ale#ok',
-\ }
-let g:lightline.component_type = {
-  \  'linter_checking': 'left',
-  \  'linter_warnings': 'warning',
-  \  'linter_errors': 'error',
-  \  'linter_ok': 'left',
-\ }
-let g:lightline.active = { 'right': [
-  \  [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
-  \  [ 'lineinfo' ],
-  \  [ 'percent' ],
-  \  [ 'fileformat', 'fileencoding', 'filetype' ]]
-\ }
-
-" Disabling all highlighting
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_set_highlights = 0
-let g:airline#extensions#ale#enabled = 1
-
 " React: ---------------------------------------------------------------
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
@@ -138,6 +98,8 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:inflector_mapping = 'gI'
 
 " Fzf: -----------------------------------------------------------------
+let $FZF_DEFAULT_COMMAND = 'rg --files'
+
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -158,6 +120,8 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -181,3 +145,5 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+lua require'lspconfig'.bashls.setup{}

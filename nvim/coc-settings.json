@@ -1,4 +1,17 @@
 {
   "codeLens.enable": true,
-  "solargraph.commandPath": "~/.asdf/installs/ruby/2.7.2/bin/solargraph"
+  "diagnostic.errorSign": "🚫",
+  "diagnostic.warningSign": "⚠️",
+  "diagnostic.infoSign": "ℹ️",
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  },
+  "solargraph.transport": "stdio",
+  "solargraph.checkGemVersion": false,
+  "solargraph.diagnostics": true
 }

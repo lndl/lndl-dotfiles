@@ -12,8 +12,10 @@ Plug 'junegunn/vader.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'sotte/presenting.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " Autocompletion:  -------------------------------------------------------
+Plug 'neovim/nvim-lspconfig'
 Plug '/opt/homebrew/opt/fzf/'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -24,10 +26,6 @@ Plug 'honza/vim-snippets'
 " SCM: -------------------------------------------------------------------
 Plug 'tpope/vim-fugitive'
 
-" Syntax: ----------------------------------------------------------------
-Plug 'w0rp/ale'
-Plug 'maximbaz/lightline-ale'
-
 " HTML:-------------------------------------------------------------------
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'sass', 'less', 'scss', 'eruby'] }
 
@@ -35,13 +33,18 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'sass', 'less', 'scss', 'eruby'
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 
 " Elixir: ------------------------------------------------------------
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'elixir-editors/vim-elixir'
 
 " Haskell: ------------------------------------------------------------
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 
 " JS: --------------------------------------------------------------
 Plug 'pangloss/vim-javascript'
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
+
 
 " React JS: --------------------------------------------------------------
 Plug 'mxw/vim-jsx'
@@ -61,6 +64,9 @@ Plug 'tomlion/vim-solidity'
 
 " Godot: ------------------------------------------------------------
 Plug 'calviken/vim-gdscript3'
+
+" SQL: --------------------------------------------------------------
+Plug 'tpope/vim-dadbod'
 
 " Eye Candy:--------------------------------------------------------------
 Plug 'whatyouhide/vim-gotham'

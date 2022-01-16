@@ -5,10 +5,13 @@ eval $(/opt/homebrew/bin/brew shellenv)
 source $(brew --prefix asdf)/asdf.sh
 
 # PATH
-export PATH=bin:script:~/.bin:$PATH
+export PATH=bin:script:~/.bin:/opt/homebrew/bin:$PATH
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#ENVs
+export EDITOR=nvim
 
 # Aliases
 alias vim=nvim
