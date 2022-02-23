@@ -6,71 +6,36 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
-Plug 'wikitopian/hardmode'
-Plug 'farfanoide/inflector.vim'
-Plug 'junegunn/vader.vim'
-Plug 'skywind3000/asyncrun.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'sotte/presenting.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Autocompletion:  -------------------------------------------------------
 Plug 'neovim/nvim-lspconfig'
-Plug '/opt/homebrew/opt/fzf/'
-Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tami5/lspsaga.nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Snippets:  -------------------------------------------------------------
+"Plug 'hrsh7th/vim-vsnip'
+"Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'honza/vim-snippets'
+Plug 'dcampos/nvim-snippy'
+Plug 'dcampos/cmp-snippy'
 
 " SCM: -------------------------------------------------------------------
 Plug 'tpope/vim-fugitive'
-
-" HTML:-------------------------------------------------------------------
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'sass', 'less', 'scss', 'eruby'] }
-
-" Ruby_Rails: ------------------------------------------------------------
-Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
-
-" Elixir: ------------------------------------------------------------
-Plug 'elixir-editors/vim-elixir'
-
-" Haskell: ------------------------------------------------------------
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-
-" JS: --------------------------------------------------------------
-Plug 'pangloss/vim-javascript'
-Plug 'heavenshell/vim-jsdoc', {
-  \ 'for': ['javascript', 'javascript.jsx','typescript'],
-  \ 'do': 'make install'
-\}
-
-
-" React JS: --------------------------------------------------------------
-Plug 'mxw/vim-jsx'
-Plug 'epilande/vim-react-snippets'
-
-" Vue.JS: --------------------------------------------------------------
-Plug 'posva/vim-vue'
-
-" Rust: --------------------------------------------------------------
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-
-" Docker: ------------------------------------------------------------
-Plug 'ekalinin/Dockerfile.vim'
-
-" Solidity: ------------------------------------------------------------
-Plug 'tomlion/vim-solidity'
-
-" Godot: ------------------------------------------------------------
-Plug 'calviken/vim-gdscript3'
-
-" SQL: --------------------------------------------------------------
-Plug 'tpope/vim-dadbod'
 
 " Eye Candy:--------------------------------------------------------------
 Plug 'whatyouhide/vim-gotham'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()
