@@ -6,6 +6,7 @@ source $(brew --prefix asdf)/asdf.sh
 
 # PATH
 export PATH=bin:script:~/.bin:/opt/homebrew/bin:$PATH
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

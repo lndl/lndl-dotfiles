@@ -3,18 +3,47 @@ if !exists('g:lspconfig') | finish | endif
 lua << EOF
   local nvim_lsp = require('lspconfig')
 
-  local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...)
-      vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
+  -- General configuration
+  vim.diagnostic.config({virtual_text = false})
 
-    -- Mappings.
-    local opts = { noremap=true, silent=true }
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'K',  '<Cmd>Lspsaga hover_doc<CR>', opts)
-    buf_set_keymap('n', 'gh', '<Cmd>Lspsaga lsp_finder<CR>', opts)
-    --...
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+  vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  -- Use an on_attach function to only map the following keys
+  -- after the language server attaches to the current buffer
+  local on_attach = function(client, bufnr)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  end
+
+  -- Initialize LSP Servers
+  local servers = {
+    { lsp='tsserver',      settings={} },
+    { lsp='solargraph',    settings={} },
+    { lsp='rust_analyzer', settings={
+        assist = {
+          importGranularity = "module",
+          importPrefix = "by_self",
+        },
+        cargo = {
+          loadOutDirsFromCheck = true
+        },
+        procMacro = {
+          enable = true
+        },
+      }
+    },
+  }
+  for _, server in ipairs(servers) do
+    nvim_lsp[server.lsp].setup {
+      on_attach = on_attach,
+      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      settings = server.settings
+    }
   end
 
   -- Setup nvim-cmp.
@@ -30,7 +59,7 @@ lua << EOF
         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
     },
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
@@ -39,8 +68,8 @@ lua << EOF
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    },
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       -- { name = 'vsnip' }, -- For vsnip users.
@@ -52,7 +81,7 @@ lua << EOF
       {
         name = 'path',
         option = {
-          trailing_slash = true
+          trailing_slash = false
         }
       },
     })
@@ -60,6 +89,9 @@ lua << EOF
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline({
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
     sources = {
       { name = 'buffer' }
     }
@@ -67,66 +99,13 @@ lua << EOF
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline({
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
     sources = cmp.config.sources({
       { name = 'path' }
     }, {
       { name = 'cmdline' }
     })
   })
-
-  -- Setup LSP Saga.
-  local lspsaga = require 'lspsaga'
-  lspsaga.setup { -- defaults ...
-    debug = false,
-    use_saga_diagnostic_sign = true,
-    -- diagnostic sign
-    error_sign = ">",
-    warn_sign = ">",
-    hint_sign = ">",
-    infor_sign = ">",
-    diagnostic_header_icon = " >  ",
-    -- code action title icon
-    code_action_icon = "> ",
-    code_action_prompt = {
-      enable = true,
-      sign = true,
-      sign_priority = 40,
-      virtual_text = true,
-    },
-    finder_definition_icon = ">  ",
-    finder_reference_icon = ">  ",
-    max_preview_lines = 10,
-    finder_action_keys = {
-      open = "o",
-      vsplit = "s",
-      split = "i",
-      quit = "q",
-      scroll_down = "<C-f>",
-      scroll_up = "<C-b>",
-    },
-    code_action_keys = {
-      quit = "q",
-      exec = "<CR>",
-    },
-    rename_action_keys = {
-      quit = "<C-c>",
-      exec = "<CR>",
-    },
-    definition_preview_icon = ">  ",
-    border_style = "single",
-    rename_prompt_prefix = ">",
-    server_filetype_map = {},
-    diagnostic_prefix_format = "%d. ",
-  }
-
-  -- Initialize LSP Servers
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  local servers = { 'tsserver' }
-  for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
-      on_attach = on_attach,
-      capabilities = capabilities
-    }
-  end
-
 EOF

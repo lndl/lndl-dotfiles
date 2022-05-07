@@ -5,7 +5,7 @@ else
   source $HOME/.config/nvim/plugins.vim
 endif
 
-colorscheme dracula
+colorscheme gotham
 
 set background=dark
 set signcolumn=yes
@@ -53,10 +53,6 @@ nmap <silent> <C-E> :40vsp<CR>:Explore<CR>
 
 " Leaders
 let mapleader=";"
-
-" Mappings with Leader
-nnoremap <leader>f /
-nnoremap <leader>F ?
 
 " Emmet: ---------------------------------------------------------------
 let g:user_emmet_settings = {
