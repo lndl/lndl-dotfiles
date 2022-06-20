@@ -1,0 +1,9 @@
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh > /dev/null
+
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+
+# Then, source plugins and add commands to $PATH
+# zplug load --verbose
+zplug load

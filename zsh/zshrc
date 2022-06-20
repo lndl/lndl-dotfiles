@@ -1,7 +1,0 @@
-# Load all the configuration from custom zsh folder
-for file in $(ls ~/.zsh/*.zsh);
-do
-  source $file
-done
-
-source ~/lndl-dotfiles/zsh/zshrc.local

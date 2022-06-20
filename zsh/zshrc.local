@@ -2,18 +2,59 @@
 eval $(/opt/homebrew/bin/brew shellenv)
 
 # ASDF
-source $(brew --prefix asdf)/asdf.sh
+source $(brew --prefix asdf)/libexec/asdf.sh
 
 # PATH
 export PATH=bin:script:~/.bin:/opt/homebrew/bin:$PATH
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 
-# Fuzzy finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# OpenSSL
+export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/homebrew/opt/openssl@1.1"
 
 #ENVs
 export EDITOR=nvim
 
+# VI Mode
+bindkey -v
+
+# Search (builtin)
+bindkey '^R' history-incremental-search-backward
+
+# ================================================================================
 # Aliases
-alias vim=nvim
-alias gs="git status"
+# ================================================================================
+# Colorize output, add file type indicator, and put sizes in human readable format
+alias ls='ls -Fh'
+# Same as above, but in long listing format
+alias ll='ls -Fhl'
+# Alias text editor to neovim
+alias e='nvim'
+alias vim='nvim'
+# Git
+alias g='git'
+alias gl='git pull'
+alias gp='git push'
+alias gb='git branch'
+alias glo='git log'
+alias gd='git diff'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gcmsg='git commit -m'
+alias gco='git checkout'
+alias gm='git merge'
+alias gfa='git fetch -a'
+alias cdgr='cd $(git rev-parse --show-toplevel)'
+# Bundler
+alias be='bundle exec'
+alias bi='bundle install'
+alias bu='bundle update'
+# Rails (with Bundler)
+alias rs='bundle exec rails server'
+alias rc='bundle exec rails console'
+alias rdb='bundle exec rails db'
