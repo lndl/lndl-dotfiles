@@ -24,6 +24,9 @@ bindkey -v
 # Search (builtin)
 bindkey '^R' history-incremental-search-backward
 
+# Git extras completions
+source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
 # ================================================================================
 # Aliases
 # ================================================================================
