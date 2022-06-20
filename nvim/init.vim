@@ -46,11 +46,6 @@ set clipboard^=unnamed,unnamedplus
 " A fast way to save
 map <silent> <Esc><Esc> :w<CR>
 
-" Some tweaks to Vim Explorer
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-nmap <silent> <C-E> :40vsp<CR>:Explore<CR>
-
 " Leaders
 let mapleader=";"
 

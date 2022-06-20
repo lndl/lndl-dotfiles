@@ -7,9 +7,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'vim-test/vim-test'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-tree.lua'
 
 " Autocompletion:  -------------------------------------------------------
 Plug 'neovim/nvim-lspconfig'
@@ -19,7 +23,6 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-vsnip'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 " Snippets:  -------------------------------------------------------------
@@ -32,7 +35,6 @@ Plug 'tpope/vim-fugitive'
 
 " Eye Candy:--------------------------------------------------------------
 Plug 'whatyouhide/vim-gotham'
-Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()
