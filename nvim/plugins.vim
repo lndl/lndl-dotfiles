@@ -13,7 +13,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'vim-test/vim-test'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'folke/trouble.nvim'
 
 " Autocompletion:  -------------------------------------------------------
 Plug 'neovim/nvim-lspconfig'
@@ -35,6 +36,8 @@ Plug 'tpope/vim-fugitive'
 
 " Eye Candy:--------------------------------------------------------------
 Plug 'whatyouhide/vim-gotham'
-Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'folke/tokyonight.nvim'
+Plug 'xiyaowong/transparent.nvim'
 
 call plug#end()

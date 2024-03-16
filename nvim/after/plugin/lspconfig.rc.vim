@@ -4,7 +4,7 @@ lua << EOF
   local nvim_lsp = require('lspconfig')
 
   -- General configuration
-  vim.diagnostic.config({virtual_text = false})
+  vim.diagnostic.config({virtual_text = true})
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -22,8 +22,9 @@ lua << EOF
 
   -- Initialize LSP Servers
   local servers = {
-    { lsp='tsserver',      settings={} },
-    { lsp='solargraph',    settings={} },
+    { lsp='tsserver', settings={} },
+    { lsp='solargraph', settings={} },
+    -- { lsp='ruby_ls', settings={} },
     { lsp='rust_analyzer', settings={
         assist = {
           importGranularity = "module",
@@ -37,11 +38,12 @@ lua << EOF
         },
       }
     },
+    { lsp='gopls', settings={} },
   }
   for _, server in ipairs(servers) do
     nvim_lsp[server.lsp].setup {
       on_attach = on_attach,
-      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
       settings = server.settings
     }
   end

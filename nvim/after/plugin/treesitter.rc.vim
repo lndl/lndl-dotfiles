@@ -21,7 +21,8 @@ lua << EOF
       "ruby",
       "elixir",
       "rust",
-      "haskell"
+      "haskell",
+      "go"
     },
   }
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

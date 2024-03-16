@@ -5,7 +5,7 @@ else
   source $HOME/.config/nvim/plugins.vim
 endif
 
-colorscheme gotham
+colorscheme tokyonight-day
 
 set background=dark
 set signcolumn=yes
@@ -33,7 +33,7 @@ set noshowmode
 set tabstop=2 shiftwidth=2 expandtab
 
 "" Trim all whitespace when save file
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
 
 "" Disable backups and swap files
 set noswapfile
