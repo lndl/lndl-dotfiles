@@ -1,8 +1,0 @@
-OS external dependencies:
---------------------------------------------------------------------------------
-xclip: Command-line clipboard manager
-ag: Fast grep tool replacement
-
-Neovim dependencies:
---------------------------------------------------------------------------------
-vim-plug: Plugin manager (INCLUDED)

@@ -1,16 +1,17 @@
-if !exists('g:loaded_nvim_treesitter') | finish | endif
+local M = {}
 
-lua << EOF
-  require'nvim-treesitter.configs'.setup {
+local start = function()
+  require('nvim-treesitter.configs').setup({
     highlight = {
       enable = true,
-      disable = {},
     },
     indent = {
       enable = false,
       disable = {},
     },
+    auto_install = true,
     ensure_installed = {
+      "lua",
       "tsx",
       "toml",
       "php",
@@ -19,16 +20,12 @@ lua << EOF
       "html",
       "scss",
       "ruby",
+      "java",
       "elixir",
       "rust",
       "haskell",
       "go"
     },
-  }
-  local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-  parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
-
-  require'nvim-treesitter.configs'.setup {
     textobjects = {
       select = {
         enable = true,
@@ -45,5 +42,9 @@ lua << EOF
         },
       },
     },
-  }
-EOF
+  })
+end
+
+M.start = start
+
+return M

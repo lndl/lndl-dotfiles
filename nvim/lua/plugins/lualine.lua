@@ -1,4 +1,6 @@
-lua << END
+local M = {}
+
+local start = function()
   require('lualine').setup {
     options = {
       icons_enabled = true,
@@ -26,6 +28,8 @@ lua << END
     tabline = {},
     extensions = {}
   }
-END
+end
 
+M.start = start
 
+return M

@@ -10,6 +10,6 @@ My dotfiles. Nothing more.
 ```
 ln -s $HOME/lndl-dotfiles/nvim $HOME/.config/nvim
 ln -s $HOME/lndl-dotfiles/tmux/tmux.conf $HOME/.tmux.conf
-ln -s $HOME/lndl-dotfiles/zshrc $HOME/zsh/zshrc.local
+ln -s $HOME/lndl-dotfiles/zshrc $HOME/zshrc.local
 ln -s $HOME/lndl-dotfiles/git/gitignore $HOME/.gitignore
 ```

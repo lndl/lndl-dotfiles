@@ -1,0 +1,20 @@
+{
+  "yaml.schemas" : {
+
+  },
+  "editor.minimap.enabled" : false,
+  "redhat.telemetry.enabled" : false,
+  "solargraph.diagnostics" : true,
+  "vscode-neovim.neovimExecutablePaths.darwin" : "\/opt\/homebrew\/bin\/nvim",
+  "emmet.includeLanguages" : {
+    "erb" : "html"
+  },
+  "git.autofetch" : true,
+  "json.schemas" : [
+
+  ],
+  "editor.accessibilitySupport" : "off",
+  "vscode-neovim.neovimInitVimPaths.darwin" : "NONE",
+  "editor.renderControlCharacters" : true,
+  "files.trimTrailingWhitespace": true,
+}

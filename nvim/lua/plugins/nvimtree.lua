@@ -1,31 +1,14 @@
-nnoremap <silent> <leader>e :NvimTreeToggle<cr>
+local M = {}
 
-lua << EOF
-  --
-  -- This function has been generated from your
-  --   view.mappings.list
-  --   view.mappings.custom_only
-  --   remove_keymaps
-  --
-  -- You should add this function to your configuration and set on_attach = on_attach in the nvim-tree setup call.
-  --
-  -- Although care was taken to ensure correctness and completeness, your review is required.
-  --
-  -- Please check for the following issues in auto generated content:
-  --   "Mappings removed" is as you expect
-  --   "Mappings migrated" are correct
-  --
-  -- Please see https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach for assistance in migrating.
-  --
-  
-  local function on_attach(bufnr)
+local start = function()
+  local function on_attach_nvimtree(bufnr)
     local api = require('nvim-tree.api')
-  
+
     local function opts(desc)
       return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
-  
-  
+
+
     -- Default mappings. Feel free to modify or remove as you wish.
     --
     -- BEGIN_DEFAULT_ON_ATTACH
@@ -83,8 +66,7 @@ lua << EOF
     vim.keymap.set('n', '<2-LeftMouse>',  api.node.open.edit,           opts('Open'))
     vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
     -- END_DEFAULT_ON_ATTACH
-  
-  
+
     -- Mappings migrated from view.mappings.list
     --
     -- You will need to insert "your code goes here" for any mappings with a custom action_cb
@@ -92,6 +74,10 @@ lua << EOF
   end
 
   require("nvim-tree").setup({
-    on_attach = on_attach,
+    on_attach = on_attach_nvimtree,
   })
-EOF
+end
+
+M.start = start
+
+return M
